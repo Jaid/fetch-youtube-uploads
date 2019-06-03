@@ -4,12 +4,11 @@
   "author": "Jaid <jaid.jsx@gmail.com> (https://github.com/Jaid)",
   "dependencies": {
     "@babel/runtime": "^7.4.5",
-    "findup-sync": "^3.0.0",
-    "graceful-fs": "^4.1.15",
-    "json5": "^2.1.0",
-    "normalize-package-data": "^2.5.0"
+    "execall": "^2.0.0",
+    "got": "^9.6.0"
   },
   "devDependencies": {
+    "acorn": "^6.1.1",
     "babel-jest": "^24.8.0",
     "babel-preset-jaid": "^6.5.0",
     "cross-env": "^5.2.0",
