@@ -3,7 +3,7 @@
 import execall from "execall"
 import got from "got"
 
-const fetchRegex = /href="\/watch\?v=(?<id>[\w-]+)" rel="nofollow">(?<title>[^<]+)/gu
+const fetchRegex = /href="\/watch\?v=(?<id>[\w-]+)" rel="nofollow">(?<title>[^<]+)<\/a><span class="accessible-description"/gu
 
 export const gotClient = got.extend({
   baseUrl: "https://youtube.com",
