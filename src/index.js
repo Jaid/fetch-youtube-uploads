@@ -2,6 +2,9 @@
 
 import execall from "execall"
 import got from "got"
+import {AllHtmlEntities} from "html-entities"
+
+const entityDecoder = new AllHtmlEntities
 
 const fetchRegex = /href="\/watch\?v=(?<id>[\w-]+)" rel="nofollow">(?<title>[^<]+)<\/a><span class="accessible-description"/gu
 
@@ -20,7 +23,7 @@ const fetchUploadsForPath = async channelPath => {
   const matches = execall(fetchRegex, body)
   return matches.map(match => ({
     id: match.subMatches[0],
-    title: match.subMatches[1],
+    title: entityDecoder.decode(match.subMatches[1]),
   }))
 }
 

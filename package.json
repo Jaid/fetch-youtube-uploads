@@ -6,7 +6,8 @@
   "dependencies": {
     "@babel/runtime": "^7.6.0",
     "execall": "^2.0.0",
-    "got": "^9.6.0"
+    "got": "^9.6.0",
+    "html-entities": "^1.2.1"
   },
   "devDependencies": {
     "acorn": "^7.0.0",
