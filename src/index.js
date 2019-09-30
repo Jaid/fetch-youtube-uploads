@@ -15,6 +15,8 @@ export const gotClient = got.extend({
   },
 })
 
+debugger
+
 const fetchUploadsForPath = async channelPath => {
   const {statusCode, url, body, statusMessage} = await gotClient(channelPath)
   if (statusCode !== 200) {
