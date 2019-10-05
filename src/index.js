@@ -3,6 +3,7 @@
 import execall from "execall"
 import got from "got"
 import {AllHtmlEntities} from "html-entities"
+import pRetry from "p-retry"
 
 const entityDecoder = new AllHtmlEntities
 
