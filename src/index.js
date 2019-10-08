@@ -16,19 +16,48 @@ export const gotClient = got.extend({
   },
 })
 
-const fetchUploadsForPath = async channelPath => {
-  const {statusCode, url, body, statusMessage} = await gotClient(channelPath)
-  if (statusCode !== 200) {
-    throw new Error(`Requested ${url}, got ${statusCode} ${statusMessage}`)
+class NoResultsError extends Error {
+
+  constructor(...args) {
+    super(...args)
+    Error.captureStackTrace(this, NoResultsError)
   }
-  const matches = execall(fetchRegex, body)
-  return matches.map(match => ({
-    id: match.subMatches[0],
-    title: entityDecoder.decode(match.subMatches[1]),
-  }))
+
 }
 
-const fetchUploadsForChannelId = channelId => fetchUploadsForPath(`channel/${channelId}/videos`)
+const fetchUploadsForPath = async (channelPath, options = {}) => {
+  const retries = options.retries || 1
+  const fetchJob = async () => {
+    const {statusCode, url, body, statusMessage} = await gotClient(channelPath)
+    if (statusCode !== 200) {
+      throw new Error(`Requested ${url}, got ${statusCode} ${statusMessage}`)
+    }
+    const matches = execall(fetchRegex, body)
+    return matches.map(match => ({
+      id: match.subMatches[0],
+      title: entityDecoder.decode(match.subMatches[1]),
+    }))
+  }
+  if (retries >= 1) {
+    return fetchJob()
+  }
 
-export const fetchUploadsForUser = userName => fetchUploadsForPath(`user/${userName}/videos`)
+  const repeatedFetchJob = async () => {
+    const result = await fetchJob()
+    if (!result?.length) {
+      throw new NoResultsError
+    }
+    return result
+  }
+
+  try {
+    return pRetry(repeatedFetchJob, {retries})
+  } catch {
+    return []
+  }
+}
+
+const fetchUploadsForChannelId = (channelId, options) => fetchUploadsForPath(`channel/${channelId}/videos`, options)
+
+export const fetchUploadsForUser = (userName, options) => fetchUploadsForPath(`user/${userName}/videos`, options)
 export default fetchUploadsForChannelId

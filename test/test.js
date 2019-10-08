@@ -13,3 +13,12 @@ it("should run", async () => {
   expect(channelResult[0].id.length).toBeGreaterThan(5)
   expect(channelResult[0].title.length).toBeGreaterThan(0)
 })
+
+it("should run with retries", async () => {
+  const result = await fetchYoutubeUploads("UCdC0An4ZPNr_YiFiYoVbwaw", {
+    retries: 3,
+  })
+  expect(result.length).toBeGreaterThan(5)
+  expect(result[0].id.length).toBeGreaterThan(5)
+  expect(result[0].title.length).toBeGreaterThan(0)
+})
