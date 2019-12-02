@@ -3,6 +3,15 @@
 
 Returns a YouTube channel&#x27;s latest uploads.
 
+## Installation
+<a href='https://npmjs.com/package/fetch-youtube-uploads'><img alt='npm logo' src='https://raw.githubusercontent.com/npm/logos/master/npm%20logo/npm-logo-red.png' height=16/></a>
+```bash
+npm install --save fetch-youtube-uploads@^
+```
+<a href='https://yarnpkg.com/package/fetch-youtube-uploads'><img alt='Yarn logo' src='https://raw.githubusercontent.com/yarnpkg/assets/master/yarn-kitten-full.png' height=24/></a>
+```bash
+yarn add fetch-youtube-uploads@^
+```
 
 
 ## Try it out
