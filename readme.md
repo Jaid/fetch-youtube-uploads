@@ -4,31 +4,16 @@
 Returns a YouTube channel&#x27;s latest uploads.
 
 ## Installation
-<a href='https://npmjs.com/package/fetch-youtube-uploads'><img alt='npm logo' src='https://raw.githubusercontent.com/npm/logos/master/npm%20logo/npm-logo-red.png' height=16/></a>
+<a href='https://npmjs.com/package/fetch-youtube-uploads'><img alt='npm logo' src='https://github.com/Jaid/action-readme/raw/master/images/base-assets/npm.png'/></a>
 ```bash
-npm install --save fetch-youtube-uploads@^
+npm install --save fetch-youtube-uploads@^0.4.1
 ```
-<a href='https://yarnpkg.com/package/fetch-youtube-uploads'><img alt='Yarn logo' src='https://raw.githubusercontent.com/yarnpkg/assets/master/yarn-kitten-full.png' height=24/></a>
+<a href='https://yarnpkg.com/package/fetch-youtube-uploads'><img alt='Yarn logo' src='https://github.com/Jaid/action-readme/raw/master/images/base-assets/yarn.png'/></a>
 ```bash
-yarn add fetch-youtube-uploads@^
+yarn add fetch-youtube-uploads@^0.4.1
 ```
 
 
-## Try it out
-Open a browser's JavaScript console and execute:
-
-```javascript
-const scriptElement = document.createElement("script");
-scriptElement.setAttribute("type","text/javascript");
-scriptElement.setAttribute("src","https://unpkg.com/fetch-youtube-uploads@0.4.1");
-document.querySelector("head").appendChild(scriptElement);
-```
-
-The module is now loaded in a variable.
-
-```javascript
-typeof fetch-youtube-uploads.default
-```
 
 
 ## License
