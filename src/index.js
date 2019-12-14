@@ -26,7 +26,7 @@ class NoResultsError extends Error {
 }
 
 const fetchUploadsForPath = async (channelPath, options = {}) => {
-  const retries = options.retries || 1
+  const retries = options.retries || 3
   const fetchJob = async () => {
     const {statusCode, url, body, statusMessage} = await gotClient(channelPath)
     if (statusCode !== 200) {
@@ -50,11 +50,7 @@ const fetchUploadsForPath = async (channelPath, options = {}) => {
     return result
   }
 
-  try {
-    return pRetry(repeatedFetchJob, {retries})
-  } catch {
-    return []
-  }
+  return pRetry(repeatedFetchJob, {retries})
 }
 
 /**
@@ -65,7 +61,7 @@ const fetchUploadsForPath = async (channelPath, options = {}) => {
 
 /**
  * @typedef {Object} Options
- * @prop {number} retries
+ * @prop {number} [retries = 3]
  */
 
 const fetchUploadsForChannelId = (channelId, options) => fetchUploadsForPath(`channel/${channelId}/videos`, options)
