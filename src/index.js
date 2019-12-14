@@ -16,7 +16,11 @@ export const gotClient = got.extend({
   },
 })
 
-class NoResultsError extends Error {
+/**
+ * @class
+ * @extends Error
+ */
+export class NoResultsError extends Error {
 
   constructor(...args) {
     super(...args)
