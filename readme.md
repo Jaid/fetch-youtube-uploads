@@ -1,7 +1,7 @@
 # fetch-youtube-uploads
 
 
-Returns a YouTube channel&#x27;s latest uploads.
+Returns a YouTube channel&#x27;s latest uploads. Fetching is done with user requests instead of APIs.
 
 ## Installation
 <a href='https://npmjs.com/package/fetch-youtube-uploads'><img alt='npm logo' src='https://github.com/Jaid/action-readme/raw/master/images/base-assets/npm.png'/></a>
