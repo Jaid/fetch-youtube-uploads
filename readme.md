@@ -15,6 +15,49 @@ yarn add fetch-youtube-uploads@^0.4.1
 
 
 
+## Documentation
+
+* [fetch-youtube-uploads](#module_fetch-youtube-uploads)
+    * [module.exports(channelId, options)](#exp_module_fetch-youtube-uploads--module.exports) ⇒ <code>Promise.&lt;Array.&lt;Video&gt;&gt;</code> ⏏
+        * _static_
+            * [.NoResultsError](#module_fetch-youtube-uploads--module.exports.NoResultsError) ⇐ <code>Error</code>
+            * [.fetchUploadsForUser(userId, options)](#module_fetch-youtube-uploads--module.exports.fetchUploadsForUser) ⇒ <code>Promise.&lt;Array.&lt;Video&gt;&gt;</code>
+        * _inner_
+            * [~Video](#module_fetch-youtube-uploads--module.exports..Video) : <code>Object</code>
+            * [~Options](#module_fetch-youtube-uploads--module.exports..Options) : <code>Object</code>
+
+**Kind**: Exported function  
+
+| Param | Type |
+| --- | --- |
+| channelId | <code>string</code> | 
+| options | <code>Options</code> | 
+
+**Kind**: static class of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
+**Extends**: <code>Error</code>  
+**Kind**: static method of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
+
+| Param | Type |
+| --- | --- |
+| userId | <code>string</code> | 
+| options | <code>Options</code> | 
+
+**Kind**: inner typedef of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
+**Properties**
+
+| Name | Type |
+| --- | --- |
+| id | <code>string</code> | 
+| title | <code>string</code> | 
+
+**Kind**: inner typedef of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
+**Properties**
+
+| Name | Type | Default |
+| --- | --- | --- |
+| [retries] | <code>number</code> | <code>3</code> | 
+
+
 
 ## License
 ```text
