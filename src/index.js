@@ -10,7 +10,7 @@ const entityDecoder = new AllHtmlEntities
 const fetchRegex = /href="\/watch\?v=(?<id>[\w-]+)" rel="nofollow">(?<title>[^<]+)<\/a><span class="accessible-description"/gu
 
 export const gotClient = got.extend({
-  baseUrl: "https://youtube.com",
+  urlPrefix: "https://youtube.com",
   headers: {
     "User-Agent": "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)",
   },
