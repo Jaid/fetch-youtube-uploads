@@ -57,7 +57,31 @@ const fetchUploadsForPath = async (channelPath, options = {}) => {
   }
 }
 
+/**
+ * @typedef {Object} Video
+ * @prop {string} id
+ * @prop {string} title
+ */
+
+/**
+ * @typedef {Object} Options
+ * @prop {number} retries
+ */
+
 const fetchUploadsForChannelId = (channelId, options) => fetchUploadsForPath(`channel/${channelId}/videos`, options)
 
+/**
+ * @function
+ * @param {string} userId
+ * @param {Options} options
+ * @return {Promise<Video[]>}
+ */
 export const fetchUploadsForUser = (userName, options) => fetchUploadsForPath(`user/${userName}/videos`, options)
+
+/**
+ * @function
+ * @param {string} channelId
+ * @param {Options} options
+ * @return {Promise<Video[]>}
+ */
 export default fetchUploadsForChannelId
