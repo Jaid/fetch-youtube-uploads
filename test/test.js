@@ -14,10 +14,8 @@ it("should run", async () => {
   expect(channelResult[0].title.length).toBeGreaterThan(0)
 })
 
-it("should run with retries", async () => {
-  const result = await fetchYoutubeUploads("UCdC0An4ZPNr_YiFiYoVbwaw", {
-    retries: 3,
-  })
+it("should run without retries", async () => {
+  const result = await fetchYoutubeUploads("UCdC0An4ZPNr_YiFiYoVbwaw", {retries: 0})
   expect(result.length).toBeGreaterThan(5)
   expect(result[0].id.length).toBeGreaterThan(5)
   expect(result[0].title.length).toBeGreaterThan(0)
@@ -27,9 +25,7 @@ it("should run with retries", async () => {
 // I really loved your videos, Franc Tausch! ❤
 
 it("should return correct titles", async () => {
-  const result = await fetchUploadsForUser("FilmKritikTV", {
-    retries: 3,
-  })
+  const result = await fetchUploadsForUser("FilmKritikTV")
   expect(result.length).toBeGreaterThan(5)
   expect(result[0]).toStrictEqual({
     id: "kOOV1rLj6dc",
