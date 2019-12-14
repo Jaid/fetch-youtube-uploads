@@ -38,7 +38,7 @@ const fetchUploadsForPath = async (channelPath, options = {}) => {
       title: entityDecoder.decode(match.subMatches[1]),
     }))
   }
-  if (retries >= 1) {
+  if (retries <= 1) {
     return fetchJob()
   }
 
