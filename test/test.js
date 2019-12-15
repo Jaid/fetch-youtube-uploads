@@ -1,7 +1,8 @@
+import fss from "@absolunet/fss"
 import path from "path"
 
 const indexModule = (process.env.MAIN ? path.resolve(process.env.MAIN) : path.join(__dirname, "..", "src")) |> require
-const {default: fetchYoutubeUploads, fetchUploadsForUser} = indexModule
+const {default: fetchYoutubeUploads, fetchUploadsForUser, fetchUploadsFromHtml} = indexModule
 
 it("should run", async () => {
   const [channelResult, userResult] = await Promise.all([
@@ -21,25 +22,28 @@ it("should run without retries", async () => {
   expect(result[0].title.length).toBeGreaterThan(0)
 })
 
-// I do not want to be unnecessarily edgy here, but I need a dead person's channel to ensure that no new uploads break the test case
-// I really loved your videos, Franc Tausch! ❤
-
-it("should return correct titles", async () => {
-  const result = await fetchUploadsForUser("FilmKritikTV")
-  expect(result.length).toBeGreaterThan(5)
+it("should recognize premieres", () => {
+  const html = fss.readFile(path.join(__dirname, "welt.html"), "utf8")
+  const result = fetchUploadsFromHtml(html)
+  debugger
   expect(result[0]).toStrictEqual({
-    id: "kOOV1rLj6dc",
-    title: "Exklusiv: END OF WATCH Trailer german deutsch [HD]",
+    id: "__fk25Ot4Eo",
+    title: "LONDON: \"Die Darts-WM erinnert an ein Event aus der deutschen Kultur\"",
+    published: true,
   })
   expect(result[1]).toStrictEqual({
-    id: "5R1zxR5Lnww",
-    title: "PARANORMAL ACTIVITY 4 Trailer german deutsch [HD]",
+    id: "zUCgJZY_bUg",
+    title: "Aircraft Doctors - Highend-Flieger (Teil 7)",
+    published: true,
   })
-})
-
-it("should recognize premieres", async () => {
-  const result = await fetchUploadsForUser("N24de")
-  expect(result[0].unreleased).toBe(false)
-  expect(result[1].unreleased).toBe(true)
-  expect(result[2].unreleased).toBe(false)
+  expect(result[2]).toStrictEqual({
+    id: "ciMlzbXr1v8",
+    title: "Amerikas Traumschiff - Die Geschichte der SS United States | Doku",
+    published: false,
+  })
+  expect(result[3]).toStrictEqual({
+    id: "qWi6FqurYes",
+    title: "KEINEN SITZPLATZ?: Greta Thunberg fährt auf dem ICE-Boden durch Deutschland",
+    published: true,
+  })
 })

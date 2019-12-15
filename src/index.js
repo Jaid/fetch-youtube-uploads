@@ -16,6 +16,14 @@ export const gotClient = got.extend({
   },
 })
 
+async function fetch(urlPath) {
+  const {statusCode, url, body, statusMessage} = await gotClient(urlPath)
+  if (statusCode !== 200) {
+    throw new Error(`Requested ${url}, got ${statusCode} ${statusMessage}`)
+  }
+  return body
+}
+
 /**
  * @class
  * @extends Error
@@ -34,10 +42,33 @@ function normalizeTitle(title) {
   return decoded.replace("\n", " ").replace(/\s+/g, " ").trim()
 }
 
-        title: entityDecoder.decode(match.subMatches[1]),
-        published: !hasReminder,
-      }
-    })
+/**
+ * @function
+ * @param {string} html
+ * @return {Video[]}
+ */
+export function fetchUploadsFromHtml(html) {
+  const matches = execall(fetchRegex, html)
+  return matches.map(match => {
+    const hasReminder = match.match.includes("reminder-set-text=")
+    return {
+      id: match.subMatches[0],
+      title: normalizeTitle(match.subMatches[1]),
+      published: !hasReminder,
+    }
+  })
+}
+
+const fetchUploadsForPath = async (channelPath, options = {}) => {
+  const retries = options.retries || 3
+  const fetchJob = async () => {
+    let body
+    if (options.html) {
+      body = options.html
+    } else {
+      body = await fetch(channelPath)
+    }
+    return fetchUploadsFromHtml(body)
   }
   if (retries <= 1) {
     return fetchJob()
