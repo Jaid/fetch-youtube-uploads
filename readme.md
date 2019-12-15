@@ -6,11 +6,11 @@ Returns a YouTube channel&#x27;s latest uploads. Fetching is done with user requ
 ## Installation
 <a href='https://npmjs.com/package/fetch-youtube-uploads'><img alt='npm logo' src='https://github.com/Jaid/action-readme/raw/master/images/base-assets/npm.png'/></a>
 ```bash
-npm install --save fetch-youtube-uploads@^1.0.0
+npm install --save fetch-youtube-uploads@^2.0.0
 ```
 <a href='https://yarnpkg.com/package/fetch-youtube-uploads'><img alt='Yarn logo' src='https://github.com/Jaid/action-readme/raw/master/images/base-assets/yarn.png'/></a>
 ```bash
-yarn add fetch-youtube-uploads@^1.0.0
+yarn add fetch-youtube-uploads@^2.0.0
 ```
 
 
@@ -21,6 +21,7 @@ yarn add fetch-youtube-uploads@^1.0.0
     * [module.exports(channelId, options)](#exp_module_fetch-youtube-uploads--module.exports) ⇒ <code>Promise.&lt;Array.&lt;Video&gt;&gt;</code> ⏏
         * _static_
             * [.NoResultsError](#module_fetch-youtube-uploads--module.exports.NoResultsError) ⇐ <code>Error</code>
+            * [.fetchUploadsFromHtml(html)](#module_fetch-youtube-uploads--module.exports.fetchUploadsFromHtml) ⇒ <code>Array.&lt;Video&gt;</code>
             * [.fetchUploadsForUser(userId, options)](#module_fetch-youtube-uploads--module.exports.fetchUploadsForUser) ⇒ <code>Promise.&lt;Array.&lt;Video&gt;&gt;</code>
         * _inner_
             * [~Video](#module_fetch-youtube-uploads--module.exports..Video) : <code>Object</code>
@@ -39,16 +40,23 @@ yarn add fetch-youtube-uploads@^1.0.0
 
 | Param | Type |
 | --- | --- |
+| html | <code>string</code> | 
+
+**Kind**: static method of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
+
+| Param | Type |
+| --- | --- |
 | userId | <code>string</code> | 
 | options | <code>Options</code> | 
 
 **Kind**: inner typedef of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
 **Properties**
 
-| Name | Type |
-| --- | --- |
-| id | <code>string</code> | 
-| title | <code>string</code> | 
+| Name | Type | Description |
+| --- | --- | --- |
+| id | <code>string</code> |  |
+| title | <code>string</code> |  |
+| published | <code>boolean</code> | If `false`, a reminder button was found which usually means that the video entry is a future premiere |
 
 **Kind**: inner typedef of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
 **Properties**
