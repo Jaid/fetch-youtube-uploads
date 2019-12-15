@@ -5,9 +5,9 @@ import got from "got"
 import {AllHtmlEntities} from "html-entities"
 import pRetry from "p-retry"
 
-const entityDecoder = new AllHtmlEntities
+import fetchRegex from "./fetchRegex"
 
-const fetchRegex = /href="\/watch\?v=(?<id>[\w-]+)" rel="nofollow">(?<title>[^<]+)<\/a><span class="accessible-description"/gu
+const entityDecoder = new AllHtmlEntities
 
 export const gotClient = got.extend({
   prefixUrl: "https://youtube.com",
@@ -37,10 +37,14 @@ const fetchUploadsForPath = async (channelPath, options = {}) => {
       throw new Error(`Requested ${url}, got ${statusCode} ${statusMessage}`)
     }
     const matches = execall(fetchRegex, body)
-    return matches.map(match => ({
-      id: match.subMatches[0],
-      title: entityDecoder.decode(match.subMatches[1]),
-    }))
+    return matches.map(match => {
+      const hasReminder = match.match.includes("reminder-set-text=")
+      return {
+        id: match.subMatches[0],
+        title: entityDecoder.decode(match.subMatches[1]),
+        published: !hasReminder,
+      }
+    })
   }
   if (retries <= 1) {
     return fetchJob()
@@ -61,6 +65,7 @@ const fetchUploadsForPath = async (channelPath, options = {}) => {
  * @typedef {Object} Video
  * @prop {string} id
  * @prop {string} title
+ * @prop {boolean} published If `false`, a reminder button was found which usually means that the video entry is a future premiere
  */
 
 /**

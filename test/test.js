@@ -36,3 +36,10 @@ it("should return correct titles", async () => {
     title: "PARANORMAL ACTIVITY 4 Trailer german deutsch [HD]",
   })
 })
+
+it("should recognize premieres", async () => {
+  const result = await fetchUploadsForUser("N24de")
+  expect(result[0].unreleased).toBe(false)
+  expect(result[1].unreleased).toBe(true)
+  expect(result[2].unreleased).toBe(false)
+})
