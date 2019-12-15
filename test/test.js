@@ -25,7 +25,6 @@ it("should run without retries", async () => {
 it("should recognize premieres", () => {
   const html = fss.readFile(path.join(__dirname, "welt.html"), "utf8")
   const result = fetchUploadsFromHtml(html)
-  debugger
   expect(result[0]).toStrictEqual({
     id: "__fk25Ot4Eo",
     title: "LONDON: \"Die Darts-WM erinnert an ein Event aus der deutschen Kultur\"",
