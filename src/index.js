@@ -29,18 +29,11 @@ export class NoResultsError extends Error {
 
 }
 
-const fetchUploadsForPath = async (channelPath, options = {}) => {
-  const retries = options.retries || 3
-  const fetchJob = async () => {
-    const {statusCode, url, body, statusMessage} = await gotClient(channelPath)
-    if (statusCode !== 200) {
-      throw new Error(`Requested ${url}, got ${statusCode} ${statusMessage}`)
-    }
-    const matches = execall(fetchRegex, body)
-    return matches.map(match => {
-      const hasReminder = match.match.includes("reminder-set-text=")
-      return {
-        id: match.subMatches[0],
+function normalizeTitle(title) {
+  const decoded = entityDecoder.decode(title)
+  return decoded.replace("\n", " ").replace(/\s+/g, " ").trim()
+}
+
         title: entityDecoder.decode(match.subMatches[1]),
         published: !hasReminder,
       }
