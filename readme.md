@@ -1,77 +1,68 @@
 # fetch-youtube-uploads
 
 
-Returns a YouTube channel&#x27;s latest uploads. Fetching is done with user requests instead of APIs.
+<a href="https://raw.githubusercontent.com/Jaid/fetch-youtube-uploads/master/license.txt"><img src="https://img.shields.io/github/license/Jaid/fetch-youtube-uploads?style=flat-square" alt="License"/></a>  
+<a href="https://actions-badge.atrox.dev/Jaid/fetch-youtube-uploads/goto"><img src="https://img.shields.io/endpoint.svg?style=flat-square&url=https%3A%2F%2Factions-badge.atrox.dev%2FJaid%2Ffetch-youtube-uploads%2Fbadge" alt="Build status"/></a> <a href="https://github.com/Jaid/fetch-youtube-uploads/commits"><img src="https://img.shields.io/github/commits-since/Jaid/fetch-youtube-uploads/v2.0.0?style=flat-square&logo=github" alt="Commits since v2.0.0"/></a> <a href="https://github.com/Jaid/fetch-youtube-uploads/commits"><img src="https://img.shields.io/github/last-commit/Jaid/fetch-youtube-uploads?style=flat-square&logo=github" alt="Last commit"/></a> <a href="https://github.com/Jaid/fetch-youtube-uploads/issues"><img src="https://img.shields.io/github/issues/Jaid/fetch-youtube-uploads?style=flat-square&logo=github" alt="Issues"/></a>  
+<a href="https://npmjs.com/package/fetch-youtube-uploads"><img src="https://img.shields.io/npm/v/fetch-youtube-uploads?style=flat-square&logo=npm&label=latest%20version" alt="Latest version on npm"/></a> <a href="https://github.com/Jaid/fetch-youtube-uploads/network/dependents"><img src="https://img.shields.io/librariesio/dependents/npm/fetch-youtube-uploads?style=flat-square&logo=npm" alt="Dependents"/></a> <a href="https://npmjs.com/package/fetch-youtube-uploads"><img src="https://img.shields.io/npm/dm/fetch-youtube-uploads?style=flat-square&logo=npm" alt="Downloads"/></a>
+
+**Returns a YouTube channel's latest uploads. Fetching is done with user requests instead of APIs.**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## Installation
-<a href='https://npmjs.com/package/fetch-youtube-uploads'><img alt='npm logo' src='https://github.com/Jaid/action-readme/raw/master/images/base-assets/npm.png'/></a>
+<a href="https://npmjs.com/package/fetch-youtube-uploads"><img src="https://img.shields.io/badge/npm-fetch--youtube--uploads-C23039?style=flat-square&logo=npm" alt="fetch-youtube-uploads on npm"/></a>
 ```bash
 npm install --save fetch-youtube-uploads@^2.0.0
 ```
-<a href='https://yarnpkg.com/package/fetch-youtube-uploads'><img alt='Yarn logo' src='https://github.com/Jaid/action-readme/raw/master/images/base-assets/yarn.png'/></a>
+<a href="https://yarnpkg.com/package/fetch-youtube-uploads"><img src="https://img.shields.io/badge/Yarn-fetch--youtube--uploads-2F8CB7?style=flat-square&logo=yarn&logoColor=white" alt="fetch-youtube-uploads on Yarn"/></a>
 ```bash
 yarn add fetch-youtube-uploads@^2.0.0
 ```
 
 
 
-## Documentation
 
-* [fetch-youtube-uploads](#module_fetch-youtube-uploads)
-    * [module.exports(channelId, options)](#exp_module_fetch-youtube-uploads--module.exports) ⇒ <code>Promise.&lt;Array.&lt;Video&gt;&gt;</code> ⏏
-        * _static_
-            * [.NoResultsError](#module_fetch-youtube-uploads--module.exports.NoResultsError) ⇐ <code>Error</code>
-            * [.fetchUploadsFromHtml(html)](#module_fetch-youtube-uploads--module.exports.fetchUploadsFromHtml) ⇒ <code>Array.&lt;Video&gt;</code>
-            * [.fetchUploadsForUser(userId, options)](#module_fetch-youtube-uploads--module.exports.fetchUploadsForUser) ⇒ <code>Promise.&lt;Array.&lt;Video&gt;&gt;</code>
-        * _inner_
-            * [~Video](#module_fetch-youtube-uploads--module.exports..Video) : <code>Object</code>
-            * [~Options](#module_fetch-youtube-uploads--module.exports..Options) : <code>Object</code>
 
-**Kind**: Exported function  
 
-| Param | Type |
-| --- | --- |
-| channelId | <code>string</code> | 
-| options | <code>Options</code> | 
 
-**Kind**: static class of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
-**Extends**: <code>Error</code>  
-**Kind**: static method of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
 
-| Param | Type |
-| --- | --- |
-| html | <code>string</code> | 
+## Development
 
-**Kind**: static method of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
 
-| Param | Type |
-| --- | --- |
-| userId | <code>string</code> | 
-| options | <code>Options</code> | 
 
-**Kind**: inner typedef of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
-**Properties**
-
-| Name | Type | Description |
-| --- | --- | --- |
-| id | <code>string</code> |  |
-| title | <code>string</code> |  |
-| published | <code>boolean</code> | If `false`, a reminder button was found which usually means that the video entry is a future premiere |
-
-**Kind**: inner typedef of [<code>module.exports</code>](#exp_module_fetch-youtube-uploads--module.exports)  
-**Properties**
-
-| Name | Type | Default |
-| --- | --- | --- |
-| [retries] | <code>number</code> | <code>3</code> | 
-
+Setting up:
+```bash
+git clone git@github.com:Jaid/fetch-youtube-uploads.git
+cd fetch-youtube-uploads
+npm install
+```
+Testing:
+```bash
+npm run test:dev
+```
+Testing in production environment:
+```bash
+npm run test
+```
 
 
 ## License
 ```text
 MIT License
 
-Copyright © 2019, Jaid <jaid.jsx@gmail.com> (github.com/jaid)
+Copyright © 2020, Jaid <jaid.jsx@gmail.com> (github.com/jaid)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
