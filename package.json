@@ -37,5 +37,6 @@
     "prepareActionJest": "npm run build:prod"
   },
   "name": "fetch-youtube-uploads",
-  "description": "Returns a YouTube channel's latest uploads. Fetching is done with user requests instead of APIs."
+  "description": "Returns a YouTube channel's latest uploads. Fetching is done with user requests instead of APIs.",
+  "funding": "https://github.com/sponsors/jaid"
 }
