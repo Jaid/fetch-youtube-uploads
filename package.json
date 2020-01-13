@@ -38,5 +38,9 @@
   },
   "name": "fetch-youtube-uploads",
   "description": "Returns a YouTube channel's latest uploads. Fetching is done with user requests instead of APIs.",
-  "funding": "https://github.com/sponsors/jaid"
+  "funding": "https://github.com/sponsors/jaid",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jaid/fetch-youtube-uploads"
+  }
 }
