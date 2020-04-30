@@ -43,5 +43,16 @@
     "url": "https://github.com/jaid/fetch-youtube-uploads"
   },
   "homepage": "https://github.com/Jaid/fetch-youtube-uploads",
-  "keywords": []
+  "keywords": [
+    "fetch",
+    "html",
+    "lib",
+    "library",
+    "util",
+    "utility",
+    "video",
+    "youtube",
+    "youtube-api",
+    "youtube-uploads"
+  ]
 }
